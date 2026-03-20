@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edmonton Medical Group | Family Medicine & Walk-In Clinics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #111111;
+  --ink-mid:   #2A2A2A;
+  --red:       #C8102E;
+  --red-lt:    #E8213F;
+  --red-xlt:   #F9F9F9;
+  --green:     #1D7A4A;
+  --green-lt:  #25A362;
+  --green-xlt: #E6F5ED;
+  --sand:      #F5F5F5;
+  --warm:      #FFFFFF;
+  --muted:     #555555;
+  --border:    rgba(0,0,0,0.1);
+  --serif:     'Instrument Serif', Georgia, serif;
+  --sans:      'Geist', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--warm); color: var(--ink); overflow-x: hidden; line-height: 1.6; padding-bottom: 52px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { display: flex; align-items: center; gap: 0; text-decoration: none; }
+.nav-logo-img { height: 56px; width: auto; display: block; }
+.nav-logo-text { font-family: var(--serif); font-size: 17px; color: var(--ink); letter-spacing: -0.01em; }
+.nav-logo-text span { color: #C8102E; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 13.5px; color: var(--muted); text-decoration: none; transition: color .18s; font-weight: 400; }
+.nav-links a:hover { color: var(--ink); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-phone { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 400; }
+.nav-cta {
+  background: #C8102E; color: white;
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  padding: 9px 20px; border-radius: 100px; text-decoration: none;
+  transition: background .18s;
+}
+.nav-cta:hover { background: #E8213F; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 68px;
+  display: grid;
+  grid-template-columns: 55% 45%;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 64px 80px 80px;
+  background: var(--warm);
+  position: relative;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase;
+  color: #C8102E; margin-bottom: 24px;
+}
+.hero-eyebrow::before { content: ''; width: 22px; height: 1.5px; background: #C8102E; }
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(46px, 5.2vw, 72px);
+  line-height: 1.04; letter-spacing: -0.025em;
+  color: #111111; margin-bottom: 22px;
+}
+h1 em { font-style: italic; color: #C8102E; }
+.hero-sub {
+  font-size: 16.5px; font-weight: 300; color: var(--muted);
+  max-width: 400px; line-height: 1.75; margin-bottom: 38px;
+}
+.hero-btns { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.btn-dark {
+  background: #111111; color: white;
+  font-size: 14.5px; font-weight: 500; font-family: var(--sans);
+  padding: 15px 30px; border-radius: 100px; text-decoration: none;
+  transition: background .18s, transform .12s;
+}
+.btn-dark:hover { background: #C8102E; transform: translateY(-1px); }
+.btn-line {
+  font-size: 14px; color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+  transition: color .18s, border-color .18s;
+}
+.btn-line:hover { color: #C8102E; border-color: #C8102E; }
+.hero-pills {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 48px; padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+.pill {
+  display: flex; align-items: center; gap: 6px;
+  background: #FDF0F2;
+  border: 1px solid rgba(200,16,46,0.15);
+  border-radius: 100px;
+  padding: 7px 14px;
+  font-size: 12.5px; color: #C8102E; font-weight: 500;
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #C8102E; }
+
+/* hero right — dark panel */
+.hero-right {
+  background: #111111;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 72px 52px;
+  position: relative; overflow: hidden;
+}
+.hero-right::before {
+  content: 'EMG';
+  position: absolute; bottom: -24px; right: -16px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 200px; color: rgba(255,255,255,0.03);
+  pointer-events: none; user-select: none;
+  line-height: 1;
+}
+.accepting-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,16,46,0.12); border: 1px solid rgba(200,16,46,0.25);
+  border-radius: 100px; padding: 8px 16px;
+  font-size: 12.5px; color: #C8102E; font-weight: 500;
+  margin-bottom: 30px; width: fit-content;
+}
+.pulse { width: 7px; height: 7px; border-radius: 50%; background: #C8102E; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+.clinics-heading {
+  font-family: var(--serif); font-size: 26px; color: white;
+  margin-bottom: 20px; line-height: 1.2;
+}
+.clinic-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px; padding: 18px 20px;
+  margin-bottom: 10px;
+  transition: background .18s;
+}
+.clinic-card:hover { background: rgba(255,255,255,0.09); }
+.clinic-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.clinic-name { font-size: 14px; font-weight: 500; color: white; }
+.clinic-open {
+  font-size: 11px; font-weight: 500;
+  background: rgba(200,16,46,0.12); color: #C8102E;
+  border-radius: 100px; padding: 3px 10px;
+}
+.clinic-detail { font-size: 12.5px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+.clinic-detail a { color: rgba(255,255,255,0.45); text-decoration: none; }
+.clinic-phone { font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+/* ── STRIP ── */
+.strip {
+  background: #C8102E; color: white;
+  padding: 16px 80px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.strip p { font-size: 14px; font-weight: 400; opacity: .92; }
+.strip a { color: white; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 1px; white-space: nowrap; }
+
+/* ── TRUST BAR ── */
+.trust {
+  padding: 52px 80px;
+  background: var(--sand);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.trust-item {
+  padding: 28px 32px;
+  background: var(--sand);
+}
+.trust-num { font-family: var(--serif); font-size: 38px; color: #111111; line-height: 1; margin-bottom: 6px; }
+.trust-label { font-size: 13px; color: var(--muted); font-weight: 400; }
+
+/* ── SERVICES ── */
+.services { padding: 96px 80px; background: var(--warm); }
+.section-eyebrow {
+  font-size: 11.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase;
+  color: #C8102E; display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.section-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: #C8102E; }
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.5vw, 46px);
+  color: #111111; line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: 52px; max-width: 500px;
+}
+h2 em { font-style: italic; color: #C8102E; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.svc {
+  background: var(--sand);
+  border-radius: 16px; padding: 28px 24px;
+  border: 1px solid transparent;
+  transition: border-color .18s, background .18s;
+  cursor: default;
+}
+.svc:hover { border-color: rgba(200,16,46,0.2); background: #FDF0F2; }
+.svc-icon { font-size: 26px; margin-bottom: 14px; display: block; }
+.svc-name { font-family: var(--serif); font-size: 18px; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+.svc-desc { font-size: 13px; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+/* ── LOCATIONS ── */
+.locations { padding: 96px 80px; background: var(--sand); }
+.locations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.loc-card {
+  background: var(--warm);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 16px; align-items: start;
+  transition: box-shadow .18s;
+}
+.loc-card:hover { box-shadow: 0 4px 24px rgba(14,28,18,0.07); }
+.loc-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 13px; color: #C8102E;
+  margin-bottom: 10px; display: block;
+}
+.loc-name { font-family: var(--serif); font-size: 22px; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
+.loc-addr { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+.loc-hours { font-size: 13px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+.loc-hours-detail { font-size: 12.5px; color: var(--muted); }
+.loc-phone { margin-top: 14px; }
+.loc-phone a { font-size: 14px; font-weight: 500; color: #C8102E; text-decoration: none; }
+.loc-phone a:hover { color: #E8213F; }
+.loc-tag {
+  background: #FDF0F2; color: #C8102E;
+  font-size: 11px; font-weight: 500; padding: 5px 12px;
+  border-radius: 100px; white-space: nowrap; height: fit-content;
+}
+
+/* ── DOCTORS ── */
+.doctors { padding: 96px 80px; background: var(--warm); }
+.doctors-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 52px; }
+.doctors-sub { font-size: 16px; color: var(--muted); font-weight: 300; line-height: 1.75; }
+.doctors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.doc-card {
+  background: var(--sand); border-radius: 16px; padding: 24px;
+  border: 1px solid transparent; transition: border-color .18s;
+}
+.doc-card:hover { border-color: var(--border); }
+.doc-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #C8102E; display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 18px; color: white; font-style: italic;
+  margin-bottom: 14px;
+}
+.doc-name { font-family: var(--serif); font-size: 16px; color: var(--ink); margin-bottom: 4px; }
+.doc-role { font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
+.doc-clinic {
+  font-size: 11.5px; font-weight: 500; color: #C8102E;
+  background: #FDF0F2; border-radius: 100px;
+  padding: 3px 10px; display: inline-block;
+}
+
+/* ── BOOKING ── */
+.booking {
+  padding: 96px 80px;
+  background: #111111;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.booking-eyebrow {
+  font-size: 11.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase;
+  color: #E8213F; display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+}
+.booking-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: #E8213F; }
+.booking h2 { color: white; margin-bottom: 18px; }
+.booking-sub { font-size: 15.5px; color: rgba(255,255,255,0.5); font-weight: 300; line-height: 1.75; margin-bottom: 32px; max-width: 380px; }
+.booking-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-green {
+  background: #C8102E; color: white;
+  font-size: 14.5px; font-weight: 500; font-family: var(--sans);
+  padding: 15px 28px; border-radius: 100px; text-decoration: none;
+  transition: background .18s;
+}
+.btn-green:hover { background: #E8213F; }
+.btn-outline {
+  border: 1px solid rgba(255,255,255,0.2); color: white;
+  font-size: 14.5px; font-family: var(--sans); font-weight: 400;
+  padding: 15px 28px; border-radius: 100px; text-decoration: none;
+  transition: border-color .18s, background .18s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+.booking-form {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 36px;
+}
+.booking-form-title { font-family: var(--serif); font-size: 22px; color: white; margin-bottom: 24px; }
+.fg { margin-bottom: 14px; }
+.fg label {
+  display: block; font-size: 11.5px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 7px;
+}
+.fg input, .fg select {
+  width: 100%; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+  padding: 13px 15px; font-family: var(--sans); font-size: 14px;
+  color: white; outline: none; transition: border-color .18s;
+}
+.fg input::placeholder { color: rgba(255,255,255,0.25); }
+.fg input:focus, .fg select:focus { border-color: #E8213F; }
+.fg select { color: rgba(255,255,255,0.45); }
+.fg select option { background: #1a1a1a; color: white; }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-sub {
+  width: 100%; margin-top: 6px;
+  background: #C8102E; color: white; border: none;
+  font-family: var(--sans); font-size: 14.5px; font-weight: 500;
+  padding: 15px; border-radius: 10px; cursor: pointer;
+  transition: background .18s; letter-spacing: 0.01em;
+}
+.form-sub:hover { background: #E8213F; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0A0A0A;
+  padding: 52px 80px 36px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 28px;
+}
+.footer-brand-name { font-family: var(--serif); font-size: 18px; color: white; margin-bottom: 10px; }
+.footer-brand-name span { color: #E8213F; }
+.footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 240px; }
+.footer-col-title { font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color .18s; }
+.footer-links a:hover { color: white; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12.5px; color: rgba(255,255,255,0.25); }
+.footer-bottom a { font-size: 12.5px; color: rgba(255,255,255,0.25); text-decoration: none; }
+.footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.hero-eyebrow { animation: fadeUp .55s ease both; }
+h1 { animation: fadeUp .65s .08s ease both; }
+.hero-sub { animation: fadeUp .65s .16s ease both; }
+.hero-btns { animation: fadeUp .65s .24s ease both; }
+.hero-pills { animation: fadeUp .65s .34s ease both; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 60px 24px 52px; }
+  .hero-right { padding: 48px 24px; }
+  .strip { padding: 16px 24px; }
+  .trust { grid-template-columns: repeat(2,1fr); padding: 40px 24px; }
+  .services { padding: 64px 24px; }
+  .services-grid { grid-template-columns: repeat(2,1fr); }
+  .locations { padding: 64px 24px; }
+  .locations-grid { grid-template-columns: 1fr; }
+  .doctors { padding: 64px 24px; }
+  .doctors-intro { grid-template-columns: 1fr; gap: 16px; }
+  .doctors-grid { grid-template-columns: repeat(2,1fr); }
+  .booking { grid-template-columns: 1fr; padding: 64px 24px; gap: 40px; }
+  footer { padding: 40px 24px 28px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+/* WATERMARK */
+.wm-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: rgba(17,17,17,0.92);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 12px 24px;
+  border-top: 2px solid #C8102E;
+}
+.wm-bar p {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.7);
+  letter-spacing: 0.02em;
+}
+.wm-bar strong { color: white; font-weight: 500; }
+.wm-bar span {
+  background: #C8102E; color: white;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 100px;
+}
+
+/* Diagonal watermark overlay */
+.wm-overlay {
+  position: fixed; inset: 0; z-index: 9998;
+  pointer-events: none;
+  overflow: hidden;
+}
+.wm-overlay::after {
+  content: 'DEMO · NOT FOR USE · DEMO · NOT FOR USE · DEMO · NOT FOR USE · DEMO · NOT FOR USE · DEMO · NOT FOR USE';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-35deg);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 22px; font-weight: 500; letter-spacing: 0.18em;
+  color: rgba(200,16,46,0.07);
+  white-space: nowrap;
+  width: 200%;
+  text-align: center;
+  line-height: 3.5;
+  text-shadow: none;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<!-- WATERMARK BAR -->
+<div class="wm-bar">
+  <p>This is a <strong>design demo</strong> created for Edmonton Medical Group</p>
+  <span>Not for use</span>
+  <p>Designed by <strong>mcbabzsolutions</strong></p>
+</div>
+<div class="wm-overlay"></div>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img class="nav-logo-img" src="data:image/png;base64,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" alt="Edmonton Medical Group">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#locations">Locations</a></li>
+    <li><a href="#doctors">Our doctors</a></li>
+    <li><a href="#booking">Book a visit</a></li>
+    <li><a href="#">Careers</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:7804884242" class="nav-phone">780-488-4242</a>
+    <a href="#booking" class="nav-cta">Book online</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Edmonton's family medicine group</div>
+    <h1>Your health,<br>close to <em>home.</em></h1>
+    <p class="hero-sub">Four clinics across Edmonton offering walk-in and family medicine, 7 days a week. No referral needed. New patients always welcome.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-dark">Book a visit →</a>
+      <a href="#locations" class="btn-line">Find a clinic</a>
+    </div>
+    <div class="hero-pills">
+      <span class="pill"><span class="pill-dot"></span>Accepting new patients</span>
+      <span class="pill"><span class="pill-dot"></span>Walk-ins welcome</span>
+      <span class="pill"><span class="pill-dot"></span>Open 7 days</span>
+      <span class="pill"><span class="pill-dot"></span>Direct billing</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="accepting-badge"><span class="pulse"></span> All 4 clinics open today</div>
+    <div class="clinics-heading">Find your nearest<br>EMG clinic</div>
+
+    <div class="clinic-card">
+      <div class="clinic-card-top">
+        <span class="clinic-name">Downtown Medical Clinic</span>
+        <span class="clinic-open">Open</span>
+      </div>
+      <div class="clinic-detail">11722 Jasper Avenue · Mon–Fri 9am–7pm</div>
+      <div class="clinic-detail">Sat, Sun & Stats: 10am–5pm</div>
+      <div class="clinic-phone"><a href="tel:7804884242" style="color:rgba(255,255,255,0.6);">780-488-4242</a></div>
+    </div>
+
+    <div class="clinic-card">
+      <div class="clinic-card-top">
+        <span class="clinic-name">North Edmonton Medical Clinic</span>
+        <span class="clinic-open">Open</span>
+      </div>
+      <div class="clinic-detail">15345 97 Street · Mon–Fri 9am–7pm</div>
+      <div class="clinic-detail">Sat, Sun & Stats: 10am–5pm</div>
+      <div class="clinic-phone"><a href="tel:7804576060" style="color:rgba(255,255,255,0.6);">780-457-6060</a></div>
+    </div>
+
+    <div class="clinic-card">
+      <div class="clinic-card-top">
+        <span class="clinic-name">Westend Callingwood Clinic</span>
+        <span class="clinic-open">Open</span>
+      </div>
+      <div class="clinic-detail">418, 6655 178 Street · Mon–Fri 9am–7pm</div>
+      <div class="clinic-detail">Sat, Sun & Stats: 10am–5pm</div>
+      <div class="clinic-phone"><a href="tel:7807056644" style="color:rgba(255,255,255,0.6);">780-705-6644</a></div>
+    </div>
+
+    <div class="clinic-card">
+      <div class="clinic-card-top">
+        <span class="clinic-name">Century Medical Clinic</span>
+        <span class="clinic-open">Open</span>
+      </div>
+      <div class="clinic-detail">11027 97 Street · Mon–Thu 10am–5pm</div>
+      <div class="clinic-phone"><a href="tel:7807844098" style="color:rgba(255,255,255,0.6);">780-784-4098</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <p>We are currently <strong>accepting new patients</strong> at all four EMG locations.</p>
+  <a href="#booking">Request your appointment →</a>
+</div>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-item">
+    <div class="trust-num">4</div>
+    <div class="trust-label">Clinics across Edmonton</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">7</div>
+    <div class="trust-label">Days a week, every week</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">20+</div>
+    <div class="trust-label">Physicians & specialists</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">No</div>
+    <div class="trust-label">Referral needed</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-eyebrow">What we offer</div>
+  <h2>Comprehensive care<br>for <em>every stage of life</em></h2>
+  <div class="services-grid">
+    <div class="svc">
+      <span class="svc-icon">🩺</span>
+      <div class="svc-name">Family Medicine</div>
+      <p class="svc-desc">Ongoing care for patients of all ages. Establish your family's medical home with one of our experienced physicians.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">🚶</span>
+      <div class="svc-name">Walk-In Care</div>
+      <p class="svc-desc">No appointment needed for illnesses, minor injuries, infections, and urgent non-emergency concerns.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">👩‍⚕️</span>
+      <div class="svc-name">Women's Health</div>
+      <p class="svc-desc">Pap tests, maternity care, prenatal support, and specialist gynecology referrals on-site.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">📋</span>
+      <div class="svc-name">Medical Forms</div>
+      <p class="svc-desc">Driver's medicals, sick notes, WCB claims, insurance forms, pre-employment physicals, and more.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">💉</span>
+      <div class="svc-name">Immunizations</div>
+      <p class="svc-desc">Flu vaccines, hepatitis and tetanus injections, travel immunizations, and routine vaccinations.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">🧓</span>
+      <div class="svc-name">Senior & Child Care</div>
+      <p class="svc-desc">Dedicated care programs for seniors and children, including residence forms and allergy management.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">🔬</span>
+      <div class="svc-name">Minor Procedures</div>
+      <p class="svc-desc">Biopsies, minor surgical procedures, and allergy injections performed in-clinic by our physicians.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">💊</span>
+      <div class="svc-name">Pharmacy</div>
+      <p class="svc-desc">On-site pharmacy services at select locations for convenient prescription filling after your visit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations" id="locations">
+  <div class="section-eyebrow">Our clinics</div>
+  <h2>Four locations,<br><em>one standard of care</em></h2>
+  <div class="locations-grid">
+    <div class="loc-card">
+      <div>
+        <span class="loc-num">01 — Downtown</span>
+        <div class="loc-name">Downtown Medical Clinic</div>
+        <div class="loc-addr">11722 Jasper Avenue<br>Edmonton, AB T5K 0N3</div>
+        <div class="loc-hours">Mon – Fri: 9:00 am – 7:00 pm</div>
+        <div class="loc-hours-detail">Sat, Sun & Stat Holidays: 10:00 am – 5:00 pm</div>
+        <div class="loc-phone"><a href="tel:7804884242">780-488-4242</a></div>
+      </div>
+      <span class="loc-tag">Walk-ins welcome</span>
+    </div>
+
+    <div class="loc-card">
+      <div>
+        <span class="loc-num">02 — North Edmonton</span>
+        <div class="loc-name">North Edmonton Medical Clinic</div>
+        <div class="loc-addr">15345 97 Street<br>Edmonton, AB T5X 5V3</div>
+        <div class="loc-hours">Mon – Fri: 9:00 am – 7:00 pm</div>
+        <div class="loc-hours-detail">Sat, Sun & Stat Holidays: 10:00 am – 5:00 pm</div>
+        <div class="loc-phone"><a href="tel:7804576060">780-457-6060</a></div>
+      </div>
+      <span class="loc-tag">Walk-ins welcome</span>
+    </div>
+
+    <div class="loc-card">
+      <div>
+        <span class="loc-num">03 — West Edmonton</span>
+        <div class="loc-name">Westend Callingwood Medical Clinic</div>
+        <div class="loc-addr">418, 6655 178 Street<br>Edmonton, AB T5T 4J5</div>
+        <div class="loc-hours">Mon – Fri: 9:00 am – 7:00 pm</div>
+        <div class="loc-hours-detail">Sat, Sun & Stat Holidays: 10:00 am – 5:00 pm</div>
+        <div class="loc-phone"><a href="tel:7807056644">780-705-6644</a></div>
+      </div>
+      <span class="loc-tag">Walk-ins welcome</span>
+    </div>
+
+    <div class="loc-card">
+      <div>
+        <span class="loc-num">04 — Central Edmonton</span>
+        <div class="loc-name">Century Medical Clinic</div>
+        <div class="loc-addr">11027 97 Street<br>Edmonton, AB T5H 2N1</div>
+        <div class="loc-hours">Mon – Thu: 10:00 am – 5:00 pm</div>
+        <div class="loc-hours-detail">Currently accepting new patients</div>
+        <div class="loc-phone"><a href="tel:7807844098">780-784-4098</a></div>
+      </div>
+      <span class="loc-tag">New patients</span>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="doctors" id="doctors">
+  <div class="doctors-intro">
+    <div>
+      <div class="section-eyebrow">Our team</div>
+      <h2>Physicians who<br><em>know your name</em></h2>
+    </div>
+    <p class="doctors-sub">Our physicians are board-certified family doctors and specialists committed to building long-term relationships with patients and families across Edmonton.</p>
+  </div>
+  <div class="doctors-grid">
+    <div class="doc-card">
+      <div class="doc-avatar">A</div>
+      <div class="doc-name">Dr. Moamer Alnegratt</div>
+      <div class="doc-role">Family Physician</div>
+      <span class="doc-clinic">Downtown · North</span>
+    </div>
+    <div class="doc-card">
+      <div class="doc-avatar">A</div>
+      <div class="doc-name">Dr. Khaled Ateer</div>
+      <div class="doc-role">Family Physician</div>
+      <span class="doc-clinic">Downtown · North · Century</span>
+    </div>
+    <div class="doc-card">
+      <div class="doc-avatar">K</div>
+      <div class="doc-name">Dr. Girudiha Kuganathan</div>
+      <div class="doc-role">Family Physician</div>
+      <span class="doc-clinic">Downtown · North</span>
+    </div>
+    <div class="doc-card">
+      <div class="doc-avatar">H</div>
+      <div class="doc-name">Dr. Hala Al-Musawi</div>
+      <div class="doc-role">Family Physician</div>
+      <span class="doc-clinic">Westend</span>
+    </div>
+    <div class="doc-card">
+      <div class="doc-avatar">R</div>
+      <div class="doc-name">Dr. Reda Lamin</div>
+      <div class="doc-role">Family Physician</div>
+      <span class="doc-clinic">Westend</span>
+    </div>
+    <div class="doc-card">
+      <div class="doc-avatar">Z</div>
+      <div class="doc-name">Dr. Zizi Shenouda</div>
+      <div class="doc-role">Gynecologist</div>
+      <span class="doc-clinic">Downtown</span>
+    </div>
+    <div class="doc-card">
+      <div class="doc-avatar">F</div>
+      <div class="doc-name">Dr. Fawzia El-Fakharany</div>
+      <div class="doc-role">Gynecologist & OB</div>
+      <span class="doc-clinic">Westend</span>
+    </div>
+    <div class="doc-card">
+      <div class="doc-avatar">M</div>
+      <div class="doc-name">Dr. Mehnaz Khurram</div>
+      <div class="doc-role">Family Physician</div>
+      <span class="doc-clinic">Downtown</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div>
+    <div class="booking-eyebrow">Book a visit</div>
+    <h2 style="color:white;">Ready to see<br>a doctor <em>today?</em></h2>
+    <p class="booking-sub">Walk in any time, or request a callback and one of our receptionists will arrange a same-day or next-day appointment at your preferred location.</p>
+    <div class="booking-btns">
+      <a href="tel:7804884242" class="btn-green">Call us now</a>
+      <a href="mailto:info@edmontonmedicalgroup.ca" class="btn-outline">Send an email</a>
+    </div>
+  </div>
+  <div class="booking-form">
+    <div class="booking-form-title">Request a callback</div>
+    <div class="fg-row">
+      <div class="fg"><label>First name</label><input type="text" placeholder="Sara"></div>
+      <div class="fg"><label>Last name</label><input type="text" placeholder="Ahmed"></div>
+    </div>
+    <div class="fg"><label>Phone number</label><input type="tel" placeholder="(780) 555-0100"></div>
+    <div class="fg">
+      <label>Preferred clinic</label>
+      <select>
+        <option value="" disabled selected>Select a location</option>
+        <option>Downtown Medical Clinic</option>
+        <option>North Edmonton Medical Clinic</option>
+        <option>Westend Callingwood Medical Clinic</option>
+        <option>Century Medical Clinic</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label>Reason for visit</label>
+      <select>
+        <option value="" disabled selected>Select a reason</option>
+        <option>Walk-in / illness</option>
+        <option>Family medicine / new patient</option>
+        <option>Annual physical</option>
+        <option>Medical form or sick note</option>
+        <option>Immunization</option>
+        <option>Women's health</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <button class="form-sub" onclick="alert('Demo only — a real form would submit here.')">Request callback →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Edmonton <span>Medical</span> Group</div>
+      <p class="footer-brand-desc">Four family medicine and walk-in clinics serving Edmonton's downtown, north, west, and central communities since 2005.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Clinics</div>
+      <ul class="footer-links">
+        <li><a href="#">Downtown</a></li>
+        <li><a href="#">North Edmonton</a></li>
+        <li><a href="#">Westend Callingwood</a></li>
+        <li><a href="#">Century</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Family Medicine</a></li>
+        <li><a href="#">Walk-In Care</a></li>
+        <li><a href="#">Women's Health</a></li>
+        <li><a href="#">Immunizations</a></li>
+        <li><a href="#">Medical Forms</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Organisation</div>
+      <ul class="footer-links">
+        <li><a href="#">Our Doctors</a></li>
+        <li><a href="#">Pharmacy</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Edmonton Medical Group. All rights reserved.</p>
+    <a href="#">careers@edmontonmedicalgroup.ca</a>
+  </div>
+</footer>
+
+</body>
+</html>
